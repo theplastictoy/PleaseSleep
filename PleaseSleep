@@ -21,34 +21,22 @@ if [ -z "$1" ] ; then
 # REMOVE EVERYTHING
 elif [ "$ARG" == "remove" ] || [ "$ARG" == "uninstall" ]
 then
-	echo
-	echo
-	echo "REMOVING PleaseSleep with sleepwatcher 2.2"
-	echo "This will remove all PleaseSleep AND all Sleepwatcher files."
-	echo "This also includes the sleep and wake scripts."
-	echo
-	echo "Are you sure you want to continue?"
-	echo "Press Enter to continue or Crtl+c to quit"
+	echo -e "\n\n\nREMOVING PleaseSleep with sleepwatcher 2.2\nThis will remove all PleaseSleep AND all Sleepwatcher files.\nThis also includes the sleep and wake scripts.\n\nAre you sure you want to continue?\nPress Enter to continue or Crtl+c to quit"
 	read
-	echo "-------------------------------------------------------------------"
-	echo
+	echo -e "-------------------------------------------------------------------\n"
 
 	echo "Unloading the LaunchAgent..."
 	launchctl unload ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist &> /dev/null
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Removing sleep and wake scripts ..."
+	echo "\nRemoving sleep and wake scripts ..."
 	rm ~/.sleep &> /dev/null
 	rm ~/.wakeup &> /dev/null
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Removing Sleepwatcher 2.2 and all the files ..."
+	echo -e "\nRemoving Sleepwatcher 2.2 and all the files ..."
 	sudo rm -r /usr/local/Cellar/sleepwatcher &> /dev/null
 	sudo rm -r /usr/local/etc/sleepwatcher &> /dev/null
 	sudo rm ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist &> /dev/null
@@ -58,111 +46,46 @@ then
   	#sudo rm -r /Library/StartupItems/SleepWatcher &> /dev/null
 	sudo rm /usr/local/sbin/sleepwatcher &> /dev/null
 
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
-
-	echo "-------------------------------------------------------------------"
-	echo
-
-	echo "PleaseSleep and Sleepwatcher 2.2 are successfully removed from your lovely Mac!!"
-	echo
-	echo
-	echo
-
+	echo -e "\n-------------------------------------------------------------------\n\nPleaseSleep and Sleepwatcher 2.2 are successfully removed from your lovely Mac!!\n\n\n"
 
 # INSTALL EVERYTHING
 elif [ "$1" == "install" ]
 then
-	echo
-	echo
-	echo "INSTALLING PleaseSleep with sleepwatcher 2.2"
-	echo
-	echo "Are you sure you want to continue?"
-	echo "Press Enter to continue or Crtl+c to quit"
+	echo -e "\n\n\nINSTALLING PleaseSleep with sleepwatcher 2.2\n\nAre you sure you want to continue?\nPress Enter to continue or Crtl+c to quit"
 	read
-	echo "-------------------------------------------------------------------"
-	echo
+	echo "-------------------------------------------------------------------\n"
 
 	echo "Gaining permissions for /usr/local ..."
 	# source: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/El_Capitan_and_Homebrew.md
 	sudo chown -R $(whoami):admin /usr/local
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Installing Sleepwatcher 2.2 (using the brew command)."
-	echo "Please follow the instructions when prompted ..."
-	echo "(Press ENTER key to continue.)"
+	echo -e "\nInstalling Sleepwatcher 2.2 (using the brew command).\nPlease follow the instructions when prompted ...\n(Press ENTER key to continue.)"
 	read
-	echo
 	brew install sleepwatcher --quiet
-	echo
-	echo
-	echo "(Press ENTER key to continue.)"
+	echo -e "\n\n\nDone.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Creating the sleep script ..."
-		touch ~/.sleep
+	echo -e "\n\nCreating the sleep/wakeup script ..."
+		mv sleepScript ~/.sleep
 		chmod u+x ~/.sleep
-		echo "#! /bin/bash" > ~/.sleep
-		echo "echo" >> ~/.sleep
-		echo "echo `date` \"Sleeping\" >> /tmp/sleep.log" >> ~/.sleep
-		echo "/usr/sbin/networksetup setairportpower en0 off" >> ~/.sleep
-		echo "echo `date` `/usr/sbin/networksetup getairportpower en0` >> /tmp/sleep.log" >> ~/.sleep
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
-	read
-	echo
-
-	echo "Creating the wake script ..."
-		touch ~/.wakeup
+		mv wakeupScript ~/.wakeup
 		chmod u+x ~/.wakeup
-		echo "#! /bin/bash" > ~/.wakeup
-		echo "echo" >> ~/.wakeup
-		echo "echo `date` \"Waking up\" >> /tmp/sleep.log" >> ~/.wakeup
-		echo "sleep 7" >> ~/.wakeup
-		echo "/usr/sbin/networksetup setairportpower en0 on" >> ~/.wakeup
-		echo "echo `date` `/usr/sbin/networksetup getairportpower en0` >> /tmp/sleep.log" >> ~/.wakeup
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Copying *.plist file to ~/Library/LaunchAgents ..."
+	echo "\nCopying *.plist file to ~/Library/LaunchAgents ..."
 	cp /usr/local/Cellar/sleepwatcher/2.2/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist ~/Library/LaunchAgents
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
 
-	echo "Starting PleaseSleep"
+	echo "\nStarting PleaseSleep"
 	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
-	echo "Done."
-	echo "(Press ENTER key to continue.)"
+	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
-	echo
-	echo
-	echo "-------------------------------------------------------------------"
-	echo
-	echo "Path to wake script: ~/.wakeup"
-	echo "Path to sleep script: ~/.sleep"
-	echo "Path to logging file: /tmp/sleep.log"
-	echo
-	echo "Note that WiFi will only turn on 7 seconds AFTER your Mac has been waked"
-	echo
-	echo "-------------------------------------------------------------------"
-	echo
-	echo
-	echo
-	echo "IF NO ERRORS WERE FOUND, THEN INSTALLATION IS COMPLETE."
-	echo
-	echo "Your lovely Mac will sleep like a boss now!"
-	echo
-	echo
-	echo
 
+	echo -e "\n\n-------------------------------------------------------------------\n\n\nPath to wake script: ~/.wakeup\nPath to sleep script: ~/.sleep\nPath to logging file: /tmp/sleep.log\n\nNote that WiFi will only turn on 5 seconds AFTER your Mac has been waked\n\n-------------------------------------------------------------------\n\n\n\nIF NO ERRORS WERE FOUND, THEN INSTALLATION IS COMPLETE.\n\n\nYour lovely Mac will sleep like a boss now!\n\n\n\n"
 fi
