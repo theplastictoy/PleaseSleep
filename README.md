@@ -43,6 +43,7 @@ will overwrite the files you already care. Be warned.**
 ### Installation and Removal
 
 INSTALL VIDEO: [https://goo.gl/uL64me](https://goo.gl/uL64me)
+-- For better quality: I recommend you to download the video from my google drive. Google compresses the previews... The video file is about 80MB
 
 To install it, you first need to change the permossions of the PleaseSleep script (enter this in the terminal app):
 ```bash
