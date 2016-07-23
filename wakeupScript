@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if [ -f /tmp/wifi.on ]; then
     echo \"Enablig WiFi\" >> /tmp/sleep.log
