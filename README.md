@@ -42,10 +42,17 @@ will overwrite the files you already care. Be warned.**
 
 ### Installation and Removal
 
-To install it, open the terminal, go to the folder of the script and type:
+INSTALL VIDEO: [https://goo.gl/uL64me](https://goo.gl/uL64me)
+
+To install it, you first need to change the permossions of the PleaseSleep script (enter this in the terminal app):
 ```bash
-./PleaseSleep install
+chmod u+x /path/to/the/script/PleaseSleep
 ```
+Next you can install the script:
+```bash
+/path/to/the/script/PleaseSleep install
+```
+
 When the script asks for your password, you have to enter it in the Terminal.
 This is nessecary for some commands that need root permissions.
 
@@ -57,10 +64,5 @@ source: http://brew.sh
 
 To remove it, type:
 ```bash
-./PleaseSleep remove
-```
-
-If you get an error when executing the PleaseSleep file such as permission denied, or file not executable, you might have to chmod the file. simply type the following command and it should work:
-```bash
-$ chmod u+x PleaseSleep
+/path/to/the/script/PleaseSleep remove
 ```
