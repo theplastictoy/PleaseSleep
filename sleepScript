@@ -11,4 +11,4 @@ if [ \"\" !=  \"\$status\" ]; then
 
     touch /tmp/wifi.on
     networksetup setairportpower en0 off
-fi" > ~/.sleep
+fi
