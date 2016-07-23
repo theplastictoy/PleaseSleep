@@ -37,6 +37,7 @@ then
 	read
 
 	echo -e "\nRemoving Sleepwatcher 2.2 and all the files ..."
+	brew remove sleepwatcher --quiet
 	sudo rm -r /usr/local/Cellar/sleepwatcher &> /dev/null
 	sudo rm -r /usr/local/etc/sleepwatcher &> /dev/null
 	sudo rm ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist &> /dev/null
@@ -63,6 +64,12 @@ then
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
 
+	echo -e "\nUpdating Brew ...\n(Press ENTER key to continue.)"
+	read
+	brew update --quiet
+	echo -e "\n\n\nDone.\n(Press ENTER key to continue.)"
+	read
+	
 	echo -e "\nInstalling Sleepwatcher 2.2 (using the brew command).\nPlease follow the instructions when prompted ...\n(Press ENTER key to continue.)"
 	read
 	brew install sleepwatcher --quiet
