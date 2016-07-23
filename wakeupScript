@@ -2,6 +2,6 @@
 
 if [ -f /tmp/wifi.on ]; then
     echo "Enablig WiFi" >> /tmp/sleep.log
-    sleep 5
+    sleep 3
     /usr/sbin/networksetup setairportpower en0 on
 fi
