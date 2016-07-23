@@ -7,7 +7,7 @@ if [ -f /tmp/wifi.on ]; then
 fi
 
 if [ "" !=  "$status" ]; then
-    echo "WiFi is On ... storing statement" >> /tmp/sleep.log
+    echo "`date` -- WiFi is On ... storing statement" >> /tmp/sleep.log
     
     touch /tmp/wifi.on
     networksetup setairportpower en0 off
