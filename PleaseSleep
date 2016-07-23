@@ -70,9 +70,9 @@ then
 	read
 
 	echo -e "\n\nCreating the sleep/wakeup script ..."
-		mv sleepScript ~/.sleep
+		mv `dirname $0`/sleepScript ~/.sleep
 		chmod u+x ~/.sleep
-		mv wakeupScript ~/.wakeup
+		mv `dirname $0`/wakeupScript ~/.wakeup
 		chmod u+x ~/.wakeup
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
