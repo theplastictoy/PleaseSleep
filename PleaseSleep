@@ -25,12 +25,12 @@ then
 	read
 	echo -e "-------------------------------------------------------------------\n"
 
-	echo "Unloading the LaunchAgent..."
+	echo -e "Unloading the LaunchAgent..."
 	launchctl unload ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist &> /dev/null
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
 
-	echo "\nRemoving sleep and wake scripts ..."
+	echo -e "\nRemoving sleep and wake scripts ..."
 	rm ~/.sleep &> /dev/null
 	rm ~/.wakeup &> /dev/null
 	echo -e "Done.\n(Press ENTER key to continue.)"
@@ -55,9 +55,9 @@ elif [ "$1" == "install" ]
 then
 	echo -e "\n\n\nINSTALLING PleaseSleep with sleepwatcher 2.2\n\nAre you sure you want to continue?\nPress Enter to continue or Crtl+c to quit"
 	read
-	echo "-------------------------------------------------------------------\n"
+	echo -e "-------------------------------------------------------------------\n"
 
-	echo "Gaining permissions for /usr/local ..."
+	echo -e "Gaining permissions for /usr/local ..."
 	# source: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/El_Capitan_and_Homebrew.md
 	sudo chown -R $(whoami):admin /usr/local
 	echo -e "Done.\n(Press ENTER key to continue.)"
@@ -77,12 +77,12 @@ then
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
 
-	echo "\nCopying *.plist file to ~/Library/LaunchAgents ..."
+	echo -e "\nCopying *.plist file to ~/Library/LaunchAgents ..."
 	cp /usr/local/Cellar/sleepwatcher/2.2/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist ~/Library/LaunchAgents
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
 
-	echo "\nStarting PleaseSleep"
+	echo -e "\nStarting PleaseSleep"
 	launchctl load ~/Library/LaunchAgents/de.bernhard-baehr.sleepwatcher-20compatibility-localuser.plist
 	echo -e "Done.\n(Press ENTER key to continue.)"
 	read
