@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -f /tmp/wifi.on ]; then
-    echo \"Enablig WiFi\" >> /tmp/sleep.log
+    echo "Enablig WiFi" >> /tmp/sleep.log
     sleep 5
     /usr/sbin/networksetup setairportpower en0 on
 fi
