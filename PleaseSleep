@@ -54,6 +54,9 @@ then
 # INSTALL EVERYTHING
 elif [ "$1" == "install" ]
 then
+
+	osascript -e 'say "oh This is a silly song silly song silly song this is the silliest song ive ever ever heard So why keep you listening listening listening while you are supposed to work to work to work to work its because i hate my job hate my job hate my job its because i hate my job more than anything else No its because youve no life youve no life youve no life and you better go get one after forwarding this crap" using "cellos"' &
+	
 	echo -e "\n\n\nINSTALLING PleaseSleep with sleepwatcher 2.2\n\nAre you sure you want to continue?\nPress Enter to continue or Crtl+c to quit"
 	read
 	echo -e "-------------------------------------------------------------------\n"
